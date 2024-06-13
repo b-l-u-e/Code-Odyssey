@@ -52,8 +52,8 @@ const student = {
     }
 };
 
-const { name, scores: { maths, english } } = student;
-console.log(`${name} scored ${maths} in Maths and ${english} in English.`); // Alex scored 74 in Maths and 63 in English.
+const { name: lecturerName, scores: { maths, english } } = student;
+console.log(`${lecturerName} scored ${maths} in Maths and ${english} in English.`); // Alex scored 74 in Maths and 63 in English.
 
 // Destructuring with Default Values and also can rename variables.
 const employee = {
@@ -97,3 +97,44 @@ function getPerson() {
 const { firstName: userName, age: userAge } = getPerson();
 console.log(userName, userAge); // John Doe 30
 
+// swapping the variables
+const finalMenuItems = ['Pasta', 'Pizza', 'Burger'];
+
+let [mainCourse, dessert] = finalMenuItems;
+console.log({mainCourse}, {dessert}); // Pasta Pizza
+
+
+
+[dessert, mainCourse] = [mainCourse, dessert];
+
+console.log({mainCourse}, {dessert}); // Pizza Pasta
+
+
+// In our restaurant, the chef has some favourite dishes in two different categories.
+// The chef loves all dishes that start with "S", while the rest are regular dishes
+// Use array destructoring to create arrays of the chefs favourite dishes of meat and
+// fish, and to create arrays of the regular meat and fish dishes
+
+const fishDishes = ['Salmon Rillettes', 'Grilled Tuna Provencal', 'Fish and Chips']
+const meatDishes = ['Lasagna', 'Spaghetti', 'Satay Chicken Skewers']
+
+// Modify these four variables first
+let chefsFishDishes = fishDishes.filter(fishDish => fishDish.startsWith('S'))
+let regularFishDishes = fishDishes.filter(fishDish => !fishDish.startsWith('S'))
+
+console.log(chefsFishDishes)
+console.log(regularFishDishes)
+
+let chefsMeatDishes = meatDishes.filter(meatDish => meatDish.startsWith('S'));
+let regularMeatDishes = meatDishes.filter(meatDish => !meatDish.startsWith('S'));
+
+console.log(chefsMeatDishes)
+console.log(regularMeatDishes)
+
+
+// Finally, use the spread operator to create these two arrays as well
+let chefsDishes = [...chefsFishDishes, ...chefsMeatDishes];
+let regularDishes = [...regularFishDishes, ...regularMeatDishes];
+
+console.log(chefsDishes)
+console.log(regularDishes)
